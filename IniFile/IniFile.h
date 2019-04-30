@@ -42,6 +42,8 @@
 #include <optional>
 #include <initializer_list>
 #include <regex>
+#include <locale>
+#include <cctype>
 
 struct IniEntry
 {
@@ -355,17 +357,25 @@ private:
     std::string CurrentLine;
     std::smatch Match;
 
+    auto TrimWhitespaceFromEnd = [](std::string &ToTrim)
+    {
+      ToTrim.erase(std::find_if(ToTrim.rbegin(), ToTrim.rend(), [](int ch) { return !std::isspace(ch); }).base(), ToTrim.end());
+    };
+
     while (InFile && std::getline(InFile, CurrentLine) && !CurrentLine.empty() && (CurrentLine.front() != '\n'))
     {
       if (std::regex_search(CurrentLine, Match, EntryRegex))
       {
+        std::string ValueString(Match[2]);
+        TrimWhitespaceFromEnd(ValueString);
+
         if (CurrentLine.front() == '+')
         {
-          Section[Match[1]].AddValue(Match[2]);
+          Section[Match[1]].AddValue(ValueString);
         }
         else
         {
-          Section.CreateEntry(Match[1]).AddValue(Match[2]);
+          Section.CreateEntry(Match[1]).AddValue(ValueString);
         }
       }
     }

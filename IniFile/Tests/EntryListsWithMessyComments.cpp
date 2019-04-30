@@ -68,7 +68,7 @@ TEST_CASE("An ini file with multiple sections with lists of values for keys with
     auto &List_Entry_Values = List_Entry.GetValues();
     REQUIRE(List_Entry_Values.size() == 3);
     REQUIRE(List_Entry_Values[0] == R"("Value1")");
-    REQUIRE(List_Entry_Values[1] == R"((Value2) )");
+    REQUIRE(List_Entry_Values[1] == R"((Value2))");
     REQUIRE(List_Entry_Values[2] == R"("Value3")");
   }
 
@@ -91,8 +91,8 @@ TEST_CASE("An ini file with multiple sections with lists of values for keys with
     auto &List1_Entry_Values = List1_Entry.GetValues();
     REQUIRE(List1_Entry_Values.size() == 3);
     REQUIRE(List1_Entry_Values[0] == R"("Val1")");
-    REQUIRE(List1_Entry_Values[1] == R"("Val2" )");
-    REQUIRE(List1_Entry_Values[2] == R"("List1V3" )");
+    REQUIRE(List1_Entry_Values[1] == R"("Val2")");
+    REQUIRE(List1_Entry_Values[2] == R"("List1V3")");
 
     REQUIRE(List2_Entry.GetKey() == "List2");
     REQUIRE(List2_Entry.GetValueCount() == 3);
@@ -100,7 +100,7 @@ TEST_CASE("An ini file with multiple sections with lists of values for keys with
     REQUIRE(List2_Entry_Values.size() == 3);
     REQUIRE(List2_Entry_Values[0] == R"("L2Val1")");
     REQUIRE(List2_Entry_Values[1] == R"((L2,Val2))");
-    REQUIRE(List2_Entry_Values[2] == R"("anothervalue" )");
+    REQUIRE(List2_Entry_Values[2] == R"("anothervalue")");
   }
 
 }

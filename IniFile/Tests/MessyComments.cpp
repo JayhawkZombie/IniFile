@@ -71,11 +71,11 @@ TEST_CASE("An ini file with multiple sections with many messy comments can be pa
 
     REQUIRE(Key2_Entry.GetKey() == "Key2");
     REQUIRE(Key2_Entry.GetValueCount() == 1);
-    REQUIRE(Key2_Entry.TryGetValue().value_or("bad") == "Val2 ");
+    REQUIRE(Key2_Entry.TryGetValue().value_or("bad") == "Val2");
 
     REQUIRE(Key3_Entry.GetKey() == "Key3");
     REQUIRE(Key3_Entry.GetValueCount() == 1);
-    REQUIRE(Key3_Entry.TryGetValue().value_or("bad") == R"("whatever" )");
+    REQUIRE(Key3_Entry.TryGetValue().value_or("bad") == R"("whatever")");
   }
 
   SECTION("Section2's entries with and without comments are parsed")
@@ -98,7 +98,7 @@ TEST_CASE("An ini file with multiple sections with many messy comments can be pa
 
     REQUIRE(Key2_Entry.GetKey() == "Key2");
     REQUIRE(Key2_Entry.GetValueCount() == 1);
-    REQUIRE(Key2_Entry.TryGetValue().value_or("bad") == R"(("Value",2,WithComments) )");
+    REQUIRE(Key2_Entry.TryGetValue().value_or("bad") == R"(("Value",2,WithComments))");
   }
 
   SECTION("Section3's entry can be parsed")
