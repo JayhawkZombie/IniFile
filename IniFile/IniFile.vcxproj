@@ -143,13 +143,21 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IniFile.cpp" />
+    <ClCompile Include="Tests\EntryLists.cpp" />
+    <ClCompile Include="Tests\EntryListsWithMessyComments.cpp" />
+    <ClCompile Include="Tests\MessyComments.cpp" />
     <ClCompile Include="Tests\MultipleSectionsSimple.cpp" />
     <ClCompile Include="Tests\SimpleIniFiles.cpp" />
+    <ClCompile Include="Tests\SimpleWithSimpleComments.cpp" />
     <ClCompile Include="Tests\Tests.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Tests\EntryLists.ini" />
+    <None Include="Tests\EntryListWithMessyComments.ini" />
+    <None Include="Tests\MessyComments.ini" />
     <None Include="Tests\Simple.ini" />
     <None Include="Tests\SimpleMultipleSections.ini" />
+    <None Include="Tests\SimpleWithSimpleComments.ini" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

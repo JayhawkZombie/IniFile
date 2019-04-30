@@ -38,9 +38,25 @@
     <ClCompile Include="Tests\MultipleSectionsSimple.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Tests\SimpleWithSimpleComments.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Tests\EntryLists.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Tests\MessyComments.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Tests\EntryListsWithMessyComments.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Tests\Simple.ini" />
     <None Include="Tests\SimpleMultipleSections.ini" />
+    <None Include="Tests\SimpleWithSimpleComments.ini" />
+    <None Include="Tests\EntryLists.ini" />
+    <None Include="Tests\MessyComments.ini" />
+    <None Include="Tests\EntryListWithMessyComments.ini" />
   </ItemGroup>
 </Project>
