@@ -3,22 +3,22 @@ Set of classes to read ini files, supporting comments and multi-line entries
 
 ## Features  
 
-| Feature | Status | Test Location |
-| ------- | ------ | -------- |
-| ; or # for comments | Tested | [MessyComments.cpp](https://github.com/JayhawkZombie/IniFile/blob/master/IniFile/Tests/MessyComments.cpp) |
-| Lists of values for entries | Tested | [EntryLists.cpp](https://github.com/JayhawkZombie/IniFile/blob/master/IniFile/Tests/EntryLists.cpp) |
-| Add values to lists in non-contiguous entries | Tested | [EntryLists.cpp](https://github.com/JayhawkZombie/IniFile/blob/master/IniFile/Tests/EntryLists.cpp) |
-| Multi-line values | WIP | N/A |
-| Block comments | WIP | N/A |
-| Define section entries in separate blocks | WIP | N/A |
-| Remove values from lists in ini file | WIP | N/A |
-| Merge sections in ini file | WIP | N/A |
-| Merge entries in ini file | WIP | N/A |
-| Split entries in ini file | WIP | N/A |
-| Insert sections and entries at runtime | WIP | N/A |
-| Save modified ini file | WIP | N/A |
-| Default values for entries if value missing from key-value pair | WIP | N/A |
-| Default values for entries if entry not present in file | WIP | N/A |
+| Feature | Status | Test Location | Test File |
+| ------- | ------ | -------- | ------- |
+| ; or # for comments | Tested | [MessyComments.cpp](https://github.com/JayhawkZombie/IniFile/blob/master/IniFile/Tests/MessyComments.cpp) | [MessyComments.ini](https://github.com/JayhawkZombie/IniFile/blob/master/IniFile/TestFiles/MessyComments.ini) |
+| Lists of values for entries | Tested | [EntryLists.cpp](https://github.com/JayhawkZombie/IniFile/blob/master/IniFile/Tests/EntryLists.cpp) | [EntryLists.ini](https://github.com/JayhawkZombie/IniFile/blob/master/IniFile/TestFiles/EntryLists.ini) |
+| Add values to lists in non-contiguous entries | Tested | [EntryLists.cpp](https://github.com/JayhawkZombie/IniFile/blob/master/IniFile/Tests/EntryLists.cpp) | [EntryLists.ini](https://github.com/JayhawkZombie/IniFile/blob/master/IniFile/TestFiles/EntryLists.ini) |
+| Multi-line values | WIP | N/A | N/A |
+| Block comments | WIP | N/A | N/A |
+| Define section entries in separate blocks | WIP | N/A | N/A |
+| Remove values from lists in ini file | WIP | N/A | N/A |
+| Merge sections in ini file | WIP | N/A | N/A |
+| Merge entries in ini file | WIP | N/A | N/A |
+| Split entries in ini file | WIP | N/A | N/A |
+| Insert sections and entries at runtime | WIP | N/A | N/A |
+| Save modified ini file | WIP | N/A | N/A |
+| Default values for entries if value missing from key-value pair | WIP | N/A | N/A |
+| Default values for entries if entry not present in file | WIP | N/A | N/A |
 
 ## Examples  
 
