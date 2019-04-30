@@ -24,6 +24,9 @@
     <ClInclude Include="catch.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Tests\TestConfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IniFile.cpp">
@@ -50,13 +53,16 @@
     <ClCompile Include="Tests\EntryListsWithMessyComments.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Tests\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Tests\Simple.ini" />
-    <None Include="Tests\SimpleMultipleSections.ini" />
-    <None Include="Tests\SimpleWithSimpleComments.ini" />
-    <None Include="Tests\EntryLists.ini" />
-    <None Include="Tests\MessyComments.ini" />
-    <None Include="Tests\EntryListWithMessyComments.ini" />
+    <None Include="TestFiles\EntryLists.ini" />
+    <None Include="TestFiles\EntryListWithMessyComments.ini" />
+    <None Include="TestFiles\MessyComments.ini" />
+    <None Include="TestFiles\Simple.ini" />
+    <None Include="TestFiles\SimpleMultipleSections.ini" />
+    <None Include="TestFiles\SimpleWithSimpleComments.ini" />
   </ItemGroup>
 </Project>

@@ -29,7 +29,7 @@
 ////////////////////////////////////////////////////////////
 
 #include <IniFile/catch.hpp>
-
+#include <IniFile/Tests/TestConfig.h>
 #include <IniFile/IniFile.h>
 
 /*
@@ -41,7 +41,7 @@
 
 TEST_CASE("A simple ini file with simple comments and multiple sections SimpleWithSimpleComments.ini can be parsed", "[file][parse][simple][sections][comments]")
 {
-  IniFile Ini("Tests/SimpleWithSimpleComments.ini");
+  IniFile Ini(TestFileDirectory + "SimpleWithSimpleComments.ini");
 
   auto Sec1_Opt = Ini.TryGetSection("Section1");
   auto Sec2_Opt = Ini.TryGetSection("Section2");

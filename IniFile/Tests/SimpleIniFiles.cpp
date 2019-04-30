@@ -29,7 +29,7 @@
 ////////////////////////////////////////////////////////////
 
 #include <IniFile/catch.hpp>
-
+#include <IniFile/Tests/TestConfig.h>
 #include <IniFile/IniFile.h>
 
 SCENARIO("Simple .ini files can be parsed", "[file][parse][simple]")
@@ -38,7 +38,7 @@ SCENARIO("Simple .ini files can be parsed", "[file][parse][simple]")
 
   GIVEN("A basic .ini file Simple.ini")
   {
-    IniFileName = "Tests/Simple.ini";
+    IniFileName = TestFileDirectory + "Simple.ini";
 
     WHEN("An IniFile parses Simple.ini")
     {

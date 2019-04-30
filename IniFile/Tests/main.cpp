@@ -28,4 +28,49 @@
 //
 ////////////////////////////////////////////////////////////
 
+#define CATCH_CONFIG_RUNNER
+#include <IniFile/catch.hpp>
 
+#include "TestConfig.h"
+
+std::string TestFileDirectory = "TestFiles/";
+
+int main(int argc, char **argv)
+{
+  Catch::Session Session;
+  Session.configData().reporterName = "console";
+
+  using namespace Catch::clara;
+
+  auto CommandLine 
+    = Session.cli()
+    | Opt(TestFileDirectory, "test file directory")
+      ["--testdir"]
+      ("path to directory containing ini files to use for testing")
+    ;
+
+  Session.cli(CommandLine);
+
+  int Ret = Session.applyCommandLine(argc, argv);
+  if (TestFileDirectory.empty())
+  {
+    std::cerr << "Path to directory containing test files cannot be empty" << std::endl;
+    return -1;
+  }
+
+  // Make sure it has a '/' at the end so we don't get the folder name mashed into the file names
+  if (TestFileDirectory.back() != '/')
+  {
+    TestFileDirectory += '/';
+  }
+
+  if (Ret != 0)
+  {
+    std::cerr << "Error applying command line arguments: error code \"" << Ret << "\"" << std::endl;
+    return Ret;
+  }
+
+  int NumFailed = Session.run();
+
+  return NumFailed;
+}

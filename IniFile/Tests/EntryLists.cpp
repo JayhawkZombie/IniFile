@@ -29,13 +29,13 @@
 ////////////////////////////////////////////////////////////
 
 #include <IniFile/catch.hpp>
-
+#include <IniFile/Tests/TestConfig.h>
 #include <IniFile/IniFile.h>
 
 TEST_CASE("An ini file with entries that append to lists in values for single keys EntryLists.ini can be parsed", "[file][parse][sections][lists]")
 {
 
-  IniFile Ini("Tests/EntryLists.ini");
+  IniFile Ini(TestFileDirectory + "EntryLists.ini");
 
   auto Sec1_Opt = Ini.TryGetSection("Section1");
   auto Sec2_Opt = Ini.TryGetSection("Section2");

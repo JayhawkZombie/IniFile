@@ -29,12 +29,12 @@
 ////////////////////////////////////////////////////////////
 
 #include <IniFile/catch.hpp>
-
+#include <IniFile/Tests/TestConfig.h>
 #include <IniFile/IniFile.h>
 
 TEST_CASE("A simlpe .ini file SimpleMultipleSections.ini with multiple sections can be parsed", "[file][parse][simple][sections]")
 {
-  IniFile Ini("Tests/SimpleMultipleSections.ini");
+  IniFile Ini(TestFileDirectory + "SimpleMultipleSections.ini");
 
   auto Sec1_Opt = Ini.TryGetSection("Section1");
   auto Sec2_Opt = Ini.TryGetSection("Section2");

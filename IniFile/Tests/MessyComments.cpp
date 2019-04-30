@@ -29,13 +29,13 @@
 ////////////////////////////////////////////////////////////
 
 #include <IniFile/catch.hpp>
-
+#include <IniFile/Tests/TestConfig.h>
 #include <IniFile/IniFile.h>
 
 TEST_CASE("An ini file with multiple sections with many messy comments can be parsed", "[file][parse][sections][comments][messy]")
 {
 
-  IniFile Ini("Tests/MessyComments.ini");
+  IniFile Ini(TestFileDirectory + "MessyComments.ini");
 
   auto &Sec1_Opt = Ini.TryGetSection("Section1");
   auto &Sec2_Opt = Ini.TryGetSection("Section2");
