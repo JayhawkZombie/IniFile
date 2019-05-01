@@ -3,7 +3,7 @@
 // MIT License
 //
 // Copyright(c) 2018 Kurt Slagle - kurt_slagle@yahoo.com
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -29,8 +29,9 @@
 ////////////////////////////////////////////////////////////
 
 #include <IniFile/catch.hpp>
-#include <IniFile/Tests/TestConfig.h>
+
 #include <IniFile/IniFile.h>
+#include <IniFile/Tests/TestConfig.h>
 
 TEST_CASE("An ini file with multiple sections with many messy comments can be parsed", "[file][parse][sections][comments][messy]")
 {
@@ -94,7 +95,7 @@ TEST_CASE("An ini file with multiple sections with many messy comments can be pa
 
     REQUIRE(Key1_Entry.GetKey() == "Key1");
     REQUIRE(Key1_Entry.GetValueCount() == 1);
-    REQUIRE(Key1_Entry.TryGetValue().value_or("bad") == R"("Value1")" );
+    REQUIRE(Key1_Entry.TryGetValue().value_or("bad") == R"("Value1")");
 
     REQUIRE(Key2_Entry.GetKey() == "Key2");
     REQUIRE(Key2_Entry.GetValueCount() == 1);
@@ -114,5 +115,4 @@ TEST_CASE("An ini file with multiple sections with many messy comments can be pa
     REQUIRE(Key_Entry.GetValueCount() == 1);
     REQUIRE(Key_Entry.TryGetValue().value_or("bad") == "whatever");
   }
-
 }

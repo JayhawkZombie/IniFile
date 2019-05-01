@@ -3,7 +3,7 @@
 // MIT License
 //
 // Copyright(c) 2018 Kurt Slagle - kurt_slagle@yahoo.com
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -29,8 +29,9 @@
 ////////////////////////////////////////////////////////////
 
 #include <IniFile/catch.hpp>
-#include <IniFile/Tests/TestConfig.h>
+
 #include <IniFile/IniFile.h>
+#include <IniFile/Tests/TestConfig.h>
 
 TEST_CASE("An ini file with multiple sections with lists of values for keys with messy comments can be parsed", "[file][parse][sections][lists][comments][messy]")
 {
@@ -102,5 +103,4 @@ TEST_CASE("An ini file with multiple sections with lists of values for keys with
     REQUIRE(List2_Entry_Values[1] == R"((L2,Val2))");
     REQUIRE(List2_Entry_Values[2] == R"("anothervalue")");
   }
-
 }

@@ -3,7 +3,7 @@
 // MIT License
 //
 // Copyright(c) 2018 Kurt Slagle - kurt_slagle@yahoo.com
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -29,8 +29,9 @@
 ////////////////////////////////////////////////////////////
 
 #include <IniFile/catch.hpp>
-#include <IniFile/Tests/TestConfig.h>
+
 #include <IniFile/IniFile.h>
+#include <IniFile/Tests/TestConfig.h>
 
 SCENARIO("Simple .ini files can be parsed", "[file][parse][simple]")
 {
@@ -43,7 +44,7 @@ SCENARIO("Simple .ini files can be parsed", "[file][parse][simple]")
     WHEN("An IniFile parses Simple.ini")
     {
       IniFile SimpleIniFile(IniFileName);
-      auto SimpleSection = SimpleIniFile.TryGetSection("Simple");
+      auto    SimpleSection = SimpleIniFile.TryGetSection("Simple");
 
       THEN("The section header \"[Simple]\" is parsed")
       {
@@ -84,9 +85,6 @@ SCENARIO("Simple .ini files can be parsed", "[file][parse][simple]")
         REQUIRE(OtherKeyValueOpt.has_value());
         REQUIRE(OtherKeyValueOpt.value() == "(1,222,\"string\")");
       }
-
     }
-
   }
-
 }

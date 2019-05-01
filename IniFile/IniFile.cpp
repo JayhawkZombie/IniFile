@@ -3,7 +3,7 @@
 // MIT License
 //
 // Copyright(c) 2018 Kurt Slagle - kurt_slagle@yahoo.com
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -35,53 +35,53 @@ IniEntry::value_reverse_iterator_t IniEntry::rend()
   return m_ValueList.rend();
 }
 
-IniEntry& IniEntry::operator=(IniEntry &&Other)
+IniEntry &IniEntry::operator=(IniEntry &&Other)
 {
   m_Key = std::move(Other.m_Key);
   m_ValueList = std::move(Other.m_ValueList);
   return *this;
 }
 
-IniEntry& IniEntry::operator=(const IniEntry &Other)
+IniEntry &IniEntry::operator=(const IniEntry &Other)
 {
   m_Key = Other.m_Key;
   m_ValueList = Other.m_ValueList;
   return *this;
 }
 
-IniEntry::IniEntry(IniEntry &&Other) : m_Key(std::move(Other.m_Key))
-, m_ValueList(std::move(Other.m_ValueList))
+IniEntry::IniEntry(IniEntry &&Other)
+    : m_Key(std::move(Other.m_Key))
+    , m_ValueList(std::move(Other.m_ValueList))
 {
-
 }
 
-IniEntry::IniEntry(const IniEntry &Other) : m_Key(Other.m_Key)
-, m_ValueList(Other.m_ValueList)
+IniEntry::IniEntry(const IniEntry &Other)
+    : m_Key(Other.m_Key)
+    , m_ValueList(Other.m_ValueList)
 {
-
 }
 
-IniEntry::IniEntry(const std::string &Key, std::initializer_list<std::string> InitValues) : m_Key(Key)
-, m_ValueList(InitValues)
+IniEntry::IniEntry(const std::string &Key, std::initializer_list<std::string> InitValues)
+    : m_Key(Key)
+    , m_ValueList(InitValues)
 {
-
 }
 
-IniEntry::IniEntry(const std::string &Key, const std::string &Value) : m_Key(Key)
-, m_ValueList(1, Value)
+IniEntry::IniEntry(const std::string &Key, const std::string &Value)
+    : m_Key(Key)
+    , m_ValueList(1, Value)
 {
-
 }
 
-IniEntry::IniEntry(const std::string &Key, std::size_t NumVals, const std::string &FillValue) : m_Key(Key)
-, m_ValueList(NumVals, FillValue)
+IniEntry::IniEntry(const std::string &Key, std::size_t NumVals, const std::string &FillValue)
+    : m_Key(Key)
+    , m_ValueList(NumVals, FillValue)
 {
-
 }
 
-IniEntry::IniEntry(const std::string &Key) : m_Key(Key)
+IniEntry::IniEntry(const std::string &Key)
+    : m_Key(Key)
 {
-
 }
 
 std::size_t IniEntry::GetValueCount() const
@@ -97,7 +97,7 @@ std::optional<std::string> IniEntry::TryGetValue() const
   return std::make_optional(m_ValueList.front());
 }
 
-const std::deque<std::string>& IniEntry::GetValues() const
+const std::deque<std::string> &IniEntry::GetValues() const
 {
   return m_ValueList;
 }
@@ -175,7 +175,7 @@ void IniEntry::Clear()
   m_ValueList.clear();
 }
 
-const std::string& IniEntry::GetKey() const
+const std::string &IniEntry::GetKey() const
 {
   return m_Key;
 }

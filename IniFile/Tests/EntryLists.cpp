@@ -3,7 +3,7 @@
 // MIT License
 //
 // Copyright(c) 2018 Kurt Slagle - kurt_slagle@yahoo.com
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -29,8 +29,9 @@
 ////////////////////////////////////////////////////////////
 
 #include <IniFile/catch.hpp>
-#include <IniFile/Tests/TestConfig.h>
+
 #include <IniFile/IniFile.h>
+#include <IniFile/Tests/TestConfig.h>
 
 TEST_CASE("An ini file with entries that append to lists in values for single keys EntryLists.ini can be parsed", "[file][parse][sections][lists]")
 {
@@ -115,7 +116,7 @@ TEST_CASE("An ini file with entries that append to lists in values for single ke
 
     REQUIRE(List1_Entry.GetKey() == "List1");
     REQUIRE(List1_Entry.GetValueCount() == 3);
-    
+
     auto &List1_Entry_Values = List1_Entry.GetValues();
     REQUIRE(List1_Entry_Values.size() == 3);
     REQUIRE(List1_Entry_Values[0] == "Val1");
@@ -129,5 +130,4 @@ TEST_CASE("An ini file with entries that append to lists in values for single ke
     REQUIRE(List2_Entry_Values[2] == R"(("List2","Val",2))");
     REQUIRE(List2_Entry_Values[3] == R"(("Another",Extra,"Value"))");
   }
-
 }

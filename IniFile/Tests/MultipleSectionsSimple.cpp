@@ -3,7 +3,7 @@
 // MIT License
 //
 // Copyright(c) 2018 Kurt Slagle - kurt_slagle@yahoo.com
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -29,8 +29,9 @@
 ////////////////////////////////////////////////////////////
 
 #include <IniFile/catch.hpp>
-#include <IniFile/Tests/TestConfig.h>
+
 #include <IniFile/IniFile.h>
+#include <IniFile/Tests/TestConfig.h>
 
 TEST_CASE("A simlpe .ini file SimpleMultipleSections.ini with multiple sections can be parsed", "[file][parse][simple][sections]")
 {
@@ -116,5 +117,4 @@ TEST_CASE("A simlpe .ini file SimpleMultipleSections.ini with multiple sections 
     REQUIRE(Entry.GetValueCount() == 1);
     REQUIRE(Entry.TryGetValue().value_or("bad") == "LastEntry");
   }
-
 }

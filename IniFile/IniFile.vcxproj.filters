@@ -32,9 +32,6 @@
     <ClCompile Include="IniFile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Tests\Tests.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Tests\SimpleIniFiles.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -64,5 +61,10 @@
     <None Include="TestFiles\Simple.ini" />
     <None Include="TestFiles\SimpleMultipleSections.ini" />
     <None Include="TestFiles\SimpleWithSimpleComments.ini" />
+    <None Include="TestFiles\MultipleSectionBlocks.ini" />
+    <None Include="..\README.md" />
+    <None Include=".clang-format" />
+    <None Include="..\.gitattributes" />
+    <None Include="..\.editorconfig" />
   </ItemGroup>
 </Project>

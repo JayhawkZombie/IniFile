@@ -3,7 +3,7 @@
 // MIT License
 //
 // Copyright(c) 2018 Kurt Slagle - kurt_slagle@yahoo.com
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -42,12 +42,10 @@ int main(int argc, char **argv)
 
   using namespace Catch::clara;
 
-  auto CommandLine 
-    = Session.cli()
+  auto CommandLine = Session.cli()
     | Opt(TestFileDirectory, "test file directory")
       ["--testdir"]
-      ("path to directory containing ini files to use for testing")
-    ;
+      ("path to directory containing ini files to use for testing");
 
   Session.cli(CommandLine);
 

@@ -3,7 +3,7 @@
 // MIT License
 //
 // Copyright(c) 2018 Kurt Slagle - kurt_slagle@yahoo.com
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -30,20 +30,20 @@
 
 #pragma once
 
-#include <string>
+#include <algorithm>
+#include <cctype>
 #include <deque>
 #include <fstream>
+#include <initializer_list>
+#include <iterator>
+#include <locale>
+#include <optional>
+#include <regex>
+#include <string>
+#include <tuple>
+#include <type_traits>
 #include <unordered_map>
 #include <utility>
-#include <tuple>
-#include <iterator>
-#include <type_traits>
-#include <algorithm>
-#include <optional>
-#include <initializer_list>
-#include <regex>
-#include <locale>
-#include <cctype>
 
 struct IniEntry
 {
@@ -58,8 +58,8 @@ struct IniEntry
   IniEntry(const IniEntry &Other);
   IniEntry(IniEntry &&Other);
 
-  IniEntry& operator =(const IniEntry &Other);
-  IniEntry& operator =(IniEntry &&Other);
+  IniEntry &operator=(const IniEntry &Other);
+  IniEntry &operator=(IniEntry &&Other);
 
   inline friend bool IniEntry::operator<(const IniEntry &LHS, const IniEntry &RHS)
   {
@@ -76,20 +76,19 @@ struct IniEntry
     return (LHS.m_Key == RHS.m_Key);
   }
 
-  std::size_t GetValueCount() const;
-  std::optional<std::string> TryGetValue() const;
-  const std::deque<std::string>& GetValues() const;
-  std::optional<std::string> operator[](std::size_t ValIndex) const;
-  void AddValue(const std::string &Val);
+  std::size_t                    GetValueCount() const;
+  std::optional<std::string>     TryGetValue() const;
+  const std::deque<std::string> &GetValues() const;
+  std::optional<std::string>     operator[](std::size_t ValIndex) const;
+  void                           AddValue(const std::string &Val);
 
-  template<class ...Vals>
+  template<class... Vals>
   void AddValue(const std::string &Val, Vals... vals);
 
 private:
-
   void AddValueAtFront(const std::string &Val);
 
-  template<class ...Vals>
+  template<class... Vals>
   IniEntry::IniEntry(const std::string &Key, const std::string &Val1, Vals... OtherVals)
   {
     static_assert(std::conjunction<std::is_same<std::string, Vals>...>::value || std::conjunction<std::is_same<const char *, Vals>...>::value, "IniEntry values must of a string type");
@@ -98,21 +97,21 @@ private:
     AddValueAtFront(Val1, std::forward<Vals>(OtherVals)...);
   }
 
-  template<class ...Vals>
+  template<class... Vals>
   void IniEntry::AddValue(const std::string &Val, Vals... vals)
   {
     m_ValueList.emplace_back(Val);
     AddValue(std::forward<Vals>(vals)...);
   }
 
-  template<class ...Vals>
+  template<class... Vals>
   void IniEntry::AddValueAtFront(const std::string &Val, Vals... vals)
   {
     m_ValueList.emplace_front(Val);
     AddValueAtFront(std::forward<Vals>(vals)...);
   }
 
-  template<class ...Vals>
+  template<class... Vals>
   void AddValueAtFront(const std::string &Val, Vals... vals);
 
   using value_const_iterator_t = typename std::deque<std::string>::const_iterator;
@@ -121,31 +120,27 @@ private:
   using value_reverse_iterator_t = typename std::deque<std::string>::reverse_iterator;
 
 public:
-
-  value_const_iterator_t cbegin() const;
-  value_const_iterator_t cend() const;
-  value_iterator_t begin();
-  value_iterator_t end();
-  value_reverse_iterator_t rbegin();
-  value_reverse_iterator_t rend();
+  value_const_iterator_t         cbegin() const;
+  value_const_iterator_t         cend() const;
+  value_iterator_t               begin();
+  value_iterator_t               end();
+  value_reverse_iterator_t       rbegin();
+  value_reverse_iterator_t       rend();
   value_const_reverse_iterator_t begin() const;
   value_const_reverse_iterator_t end() const;
-  std::tuple<bool, std::size_t> RemoveValue(std::size_t ValIndex);
-  void Swap(IniEntry &Other);
-  void Clear();
-  const std::string& GetKey() const;
+  std::tuple<bool, std::size_t>  RemoveValue(std::size_t ValIndex);
+  void                           Swap(IniEntry &Other);
+  void                           Clear();
+  const std::string &            GetKey() const;
 
 private:
-
   std::deque<std::string> m_ValueList;
-  std::string m_Key{ "" };
-
+  std::string             m_Key{""};
 };
 
 class IniSection
 {
 public:
-
   using entry_iterator_t = typename std::unordered_map<std::string, IniEntry>::iterator;
   using entry_const_iterator_t = typename std::unordered_map<std::string, IniEntry>::const_iterator;
 
@@ -170,23 +165,23 @@ public:
   }
 
   IniSection(const IniSection &Other)
-    : m_SectionName(Other.m_SectionName)
-    , m_Entries(Other.m_Entries)
-  { }
+      : m_SectionName(Other.m_SectionName)
+      , m_Entries(Other.m_Entries)
+  {}
 
   IniSection(IniSection &&Other)
-    : m_SectionName(std::move(Other.m_SectionName))
-    , m_Entries(std::move(Other.m_Entries))
-  { }
+      : m_SectionName(std::move(Other.m_SectionName))
+      , m_Entries(std::move(Other.m_Entries))
+  {}
 
-  IniSection& operator =(const IniSection &Other)
+  IniSection &operator=(const IniSection &Other)
   {
     m_SectionName = Other.m_SectionName;
     m_Entries = Other.m_Entries;
     return *this;
   }
 
-  IniSection& operator =(IniSection &&Other)
+  IniSection &operator=(IniSection &&Other)
   {
     m_SectionName = std::move(Other.m_SectionName);
     m_Entries = std::move(Other.m_Entries);
@@ -194,8 +189,8 @@ public:
   }
 
   IniSection(const std::string &SectionName)
-    : m_SectionName(SectionName)
-  { }
+      : m_SectionName(SectionName)
+  {}
 
   bool HasEntry(const std::string &Key)
   {
@@ -212,7 +207,7 @@ public:
     return std::make_optional(std::reference_wrapper<IniEntry>((*it).second));
   }
 
-  IniEntry& CreateEntry(const std::string &Key)
+  IniEntry &CreateEntry(const std::string &Key)
   {
     auto res = m_Entries.emplace(Key, IniEntry(Key));
     return m_Entries.at(Key);
@@ -228,7 +223,7 @@ public:
     return m_Entries.size();
   }
 
-  const std::string& GetName() const
+  const std::string &GetName() const
   {
     return m_SectionName;
   }
@@ -242,7 +237,7 @@ public:
     }
   }
 
-  IniEntry& operator[](const std::string &Key)
+  IniEntry &operator[](const std::string &Key)
   {
     auto it = m_Entries.find(Key);
     if (it == m_Entries.end())
@@ -257,18 +252,15 @@ public:
   }
 
 private:
-
-  std::string m_SectionName;
+  std::string                               m_SectionName;
   std::unordered_map<std::string, IniEntry> m_Entries;
-
 };
 
 class IniFile
 {
 public:
-
   IniFile(const std::string &FileName)
-    : m_FileName(FileName)
+      : m_FileName(FileName)
   {
     if (!FileName.empty() && !ReadFile(FileName))
       throw std::runtime_error("Failed to read ini file");
@@ -295,12 +287,10 @@ public:
   }
 
 private:
-
   using section_iterator_t = typename std::unordered_map<std::string, IniSection>::iterator;
   using section_const_iterator_t = typename std::unordered_map<std::string, IniSection>::const_iterator;
 
 public:
-
   section_iterator_t begin()
   {
     return m_Sections.begin();
@@ -321,13 +311,12 @@ public:
     return m_Sections.cend();
   }
 
-  const std::string& GetFileName() const
+  const std::string &GetFileName() const
   {
     return m_FileName;
   }
 
 private:
-
   bool ParseFile(std::ifstream &InFile)
   {
     if (!InFile)
@@ -357,8 +346,7 @@ private:
     std::string CurrentLine;
     std::smatch Match;
 
-    auto TrimWhitespaceFromEnd = [](std::string &ToTrim)
-    {
+    auto TrimWhitespaceFromEnd = [](std::string &ToTrim) {
       ToTrim.erase(std::find_if(ToTrim.rbegin(), ToTrim.rend(), [](int ch) { return !std::isspace(ch); }).base(), ToTrim.end());
     };
 
@@ -382,9 +370,8 @@ private:
   }
 
   std::unordered_map<std::string, IniSection> m_Sections;
-  std::string m_FileName;
+  std::string                                 m_FileName;
 
   static const std::regex SectionHeaderRegex;
   static const std::regex EntryRegex;
-
 };

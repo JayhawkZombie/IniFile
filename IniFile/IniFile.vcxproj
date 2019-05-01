@@ -151,12 +151,16 @@
     <ClCompile Include="Tests\MultipleSectionsSimple.cpp" />
     <ClCompile Include="Tests\SimpleIniFiles.cpp" />
     <ClCompile Include="Tests\SimpleWithSimpleComments.cpp" />
-    <ClCompile Include="Tests\Tests.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\.editorconfig" />
+    <None Include="..\.gitattributes" />
+    <None Include="..\README.md" />
+    <None Include=".clang-format" />
     <None Include="TestFiles\EntryLists.ini" />
     <None Include="TestFiles\EntryListWithMessyComments.ini" />
     <None Include="TestFiles\MessyComments.ini" />
+    <None Include="TestFiles\MultipleSectionBlocks.ini" />
     <None Include="TestFiles\Simple.ini" />
     <None Include="TestFiles\SimpleMultipleSections.ini" />
     <None Include="TestFiles\SimpleWithSimpleComments.ini" />

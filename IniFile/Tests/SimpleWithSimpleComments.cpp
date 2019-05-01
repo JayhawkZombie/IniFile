@@ -3,7 +3,7 @@
 // MIT License
 //
 // Copyright(c) 2018 Kurt Slagle - kurt_slagle@yahoo.com
-// 
+//
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files(the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
@@ -29,8 +29,9 @@
 ////////////////////////////////////////////////////////////
 
 #include <IniFile/catch.hpp>
-#include <IniFile/Tests/TestConfig.h>
+
 #include <IniFile/IniFile.h>
+#include <IniFile/Tests/TestConfig.h>
 
 /*
   SimpleWithSimpleComments.ini
@@ -85,10 +86,9 @@ TEST_CASE("A simple ini file with simple comments and multiple sections SimpleWi
     REQUIRE(Entry_Opt.has_value());
 
     auto &Entry = Entry_Opt.value().get();
-    
+
     REQUIRE(Entry.GetKey() == "SomeKey");
     REQUIRE(Entry.GetValueCount() == 1);
     REQUIRE(Entry.TryGetValue().value_or("bad") == R"((23904823,"asdals"))");
   }
-
 }
